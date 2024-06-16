@@ -32,8 +32,7 @@
 	{#await loadData()}
 		<Skeleton />
 	{:then [transactions, tokenPrice]}
-				<Stats {transactions} {chainProvider} {tokenPrice} />
-<!--		<Skeleton />-->
+		<Stats {transactions} {chainProvider} {tokenPrice} />
 	{:catch error}
 		<p>{error.message}</p>
 	{/await}

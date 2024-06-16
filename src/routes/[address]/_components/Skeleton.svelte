@@ -1,6 +1,3 @@
-<script>
-</script>
-
 <div class="my-4 flex w-full max-w-screen-md flex-col items-stretch md:flex-row">
 	<div
 		class="mx-6 -mb-4 flex flex-1 flex-col gap-y-2 rounded-2xl bg-neutral p-8 md:!my-6 md:-mr-4 md:mb-0 md:ml-0"
