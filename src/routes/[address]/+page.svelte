@@ -32,7 +32,11 @@
 	{#await loadData()}
 		<Skeleton />
 	{:then [transactions, tokenPrice]}
-		<Stats {transactions} {chainProvider} {tokenPrice} />
+		{#if transactions.length === 0}
+			<p>No transactions found for this address.</p>
+		{:else}
+			<Stats {transactions} {chainProvider} {tokenPrice} />
+		{/if}
 	{:catch error}
 		<p>{error.message}</p>
 	{/await}
