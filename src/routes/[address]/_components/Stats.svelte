@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { ChainProvider, Transaction } from '$lib/chains/types';
-	import { shortenTx } from '$lib/utils';
+	import TxFeeCard from './cards/TxFeeCard.svelte';
+	import AverageTxFeeCard from './cards/AverageTxFeeCard.svelte';
+	import HighestTxFee from './cards/HighestTxFee.svelte';
 
 	export let transactions: Transaction[];
 	export let chainProvider: ChainProvider;
@@ -15,23 +17,9 @@
 </script>
 
 <div class="flex flex-col items-center">
-	<div class="mx-6 -mb-4 rounded-2xl bg-neutral p-8">
-		Averaged over your <b>{transactions.length}</b> transactions sent, you've spent about ${(
-			totalTxFeeUsd / transactions.length
-		).toFixed(2)} per transaction.
-	</div>
+	<AverageTxFeeCard transactionCount={transactions.length} totalTxFeeUsd={totalTxFeeUsd} />
 
-	<div class="z-10 rounded-2xl bg-info p-8 text-info-content">
-		You've spent a total of <b>{totalTxFeeEth} {chainProvider.token.symbol}</b> on transaction fees
-		alone! That's worth about <b>${totalTxFeeUsd.toFixed(2)}</b>. 🤯
-	</div>
+	<TxFeeCard {totalTxFee} token={chainProvider.token} {tokenPrice} />
 
-	<div class="mx-6 -mt-4 rounded-2xl bg-neutral p-8">
-		The transaction with the highest gas price was <b class="underline"
-			><a target="_blank" href={chainProvider.getTxExplorerUrl(txWithHighestGasPrice.hash)}
-				>{shortenTx(txWithHighestGasPrice.hash)}</a
-			></b
-		>
-		with a gas price of <b>{(Number(txWithHighestGasPrice.gasPrice) / 1e9).toFixed(3)} gwei</b>.
-	</div>
+	<HighestTxFee tx={txWithHighestGasPrice} chainProvider={chainProvider} />
 </div>
