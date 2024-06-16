@@ -12,13 +12,17 @@
 	const txsByGasPrice = transactions.sort((a, b) => Number(b.gasPrice - a.gasPrice));
 	const txWithHighestGasPrice = txsByGasPrice[0];
 
-	const { totalTxFee, totalTxFeeUsd } = totalTxFeeStats(transactions, tokenPrice, chainProvider.token);
+	const { totalTxFee, totalTxFeeUsd } = totalTxFeeStats(
+		transactions,
+		tokenPrice,
+		chainProvider.token
+	);
 </script>
 
 <div class="flex flex-col items-center">
-	<AverageTxFeeCard transactionCount={transactions.length} totalTxFeeUsd={totalTxFeeUsd} />
+	<AverageTxFeeCard transactionCount={transactions.length} {totalTxFeeUsd} />
 
 	<TxFeeCard {totalTxFee} token={chainProvider.token} {tokenPrice} />
 
-	<HighestTxFee tx={txWithHighestGasPrice} chainProvider={chainProvider} />
+	<HighestTxFee tx={txWithHighestGasPrice} {chainProvider} />
 </div>

@@ -16,10 +16,14 @@ export const shortenTx = (tx: string, length = 6, ellipsis = true): string => {
 	return shortenHex(tx, length, ellipsis);
 };
 
-export const totalTxFeeStats = (transactions: Transaction[], tokenPrice: number, token: TokenProvider) => {
-  const totalTxFee = transactions.reduce((acc, tx) => acc + tx.gasPrice * BigInt(tx.gasUsed), 0n);
-  const totalTxFeeEth = token.numberToUnits(totalTxFee);
-  const totalTxFeeUsd = totalTxFeeEth * tokenPrice;
+export const totalTxFeeStats = (
+	transactions: Transaction[],
+	tokenPrice: number,
+	token: TokenProvider
+) => {
+	const totalTxFee = transactions.reduce((acc, tx) => acc + tx.gasPrice * BigInt(tx.gasUsed), 0n);
+	const totalTxFeeEth = token.numberToUnits(totalTxFee);
+	const totalTxFeeUsd = totalTxFeeEth * tokenPrice;
 
-  return { totalTxFee, totalTxFeeEth, totalTxFeeUsd };
+	return { totalTxFee, totalTxFeeEth, totalTxFeeUsd };
 };
