@@ -17,4 +17,7 @@ export interface ChainProvider {
 
 	getBlockNumber(): Promise<bigint>;
 	getTransactions(startBlock: bigint, endBlock: bigint, address: string): Promise<Transaction[]>;
+
+	getAddressExplorerUrl(address: string): string | undefined;
+	getTxExplorerUrl(tx: string): string | undefined;
 }

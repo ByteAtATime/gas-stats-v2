@@ -9,13 +9,14 @@ export abstract class EvmChainProvider implements ChainProvider {
 	public abstract iconPath: string;
 
 	protected constructor(
-		protected etherscanUrl: string,
-		protected etherscanApiKey: string
+		protected apiUrl: string,
+		protected apiKey: string,
+		protected etherscanUrl: string
 	) {}
 
 	public async getBlockNumber(): Promise<bigint> {
 		const res = await fetch(
-			`https://${this.etherscanUrl}/api?module=proxy&action=eth_blockNumber&apikey=${this.etherscanApiKey}`
+			`https://${this.apiUrl}/api?module=proxy&action=eth_blockNumber&apikey=${this.apiKey}`
 		);
 
 		if (!res.ok) {
@@ -44,7 +45,7 @@ export abstract class EvmChainProvider implements ChainProvider {
 		});
 
 		const res = await fetch(
-			`https://${this.etherscanUrl}/api?module=account&action=txlist&address=${address}&startblock=${startBlock}&endblock=${endBlock}&sort=asc&apikey=${this.etherscanApiKey}`
+			`https://${this.apiUrl}/api?module=account&action=txlist&address=${address}&startblock=${startBlock}&endblock=${endBlock}&sort=asc&apikey=${this.apiKey}`
 		);
 
 		if (!res.ok) {
@@ -69,17 +70,26 @@ export abstract class EvmChainProvider implements ChainProvider {
 			} as Transaction;
 		});
 	}
+
+	getAddressExplorerUrl(address: string): string | undefined {
+		return `https://${this.etherscanUrl}/address/${address}`;
+	}
+
+	getTxExplorerUrl(tx: string): string | undefined {
+		return `https://${this.etherscanUrl}/tx/${tx}`;
+	}
 }
 
 export class EtherEvmChainProvider extends EvmChainProvider {
 	public token = new EtherTokenProvider();
 
 	public constructor(
+		apiUrl: string,
+		apiKey: string,
 		etherscanUrl: string,
-		etherscanApiKey: string,
 		public name: string,
 		public iconPath: string
 	) {
-		super(etherscanUrl, etherscanApiKey);
+		super(apiUrl, apiKey, etherscanUrl);
 	}
 }

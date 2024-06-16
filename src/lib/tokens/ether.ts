@@ -1,6 +1,6 @@
-import type { TokenProvider } from '$lib/tokens/types';
+import { TokenProvider } from '$lib/tokens/types';
 
-export class EtherTokenProvider implements TokenProvider {
+export class EtherTokenProvider extends TokenProvider {
 	public name = 'Ether';
 	public symbol = 'ETH';
 	public decimals = 18;
