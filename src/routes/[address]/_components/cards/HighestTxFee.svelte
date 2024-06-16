@@ -6,7 +6,7 @@
 	export let chainProvider: ChainProvider;
 </script>
 
-<div class="mx-6 -mt-4 rounded-2xl bg-neutral p-8">
+<div class="mx-6 -mt-4 rounded-2xl bg-neutral p-8 md:!my-6 md:-ml-4 md:mr-0 md:mt-0">
 	The transaction with the highest gas price was
 	<b class="underline"
 		><a href={chainProvider.getTxExplorerUrl(tx.hash)} target="_blank">{shortenTx(tx.hash)}</a></b

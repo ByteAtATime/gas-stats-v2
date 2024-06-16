@@ -9,7 +9,7 @@
 	const totalTxFeeUsd = totalTxFeeEth * tokenPrice;
 </script>
 
-<div class="z-10 rounded-2xl bg-info p-8 text-info-content">
+<div class="z-10 rounded-2xl bg-info p-8 text-lg text-info-content">
 	You've spent a total of <b>{totalTxFeeEth} {token.symbol}</b> on transaction fees alone! That's
 	worth about <b>${totalTxFeeUsd.toFixed(2)}</b>. 🤯
 </div>
