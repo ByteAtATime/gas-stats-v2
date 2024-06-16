@@ -44,7 +44,7 @@ export abstract class EvmChainProvider implements ChainProvider {
 		});
 
 		const res = await fetch(
-			`${this.etherscanUrl}/api?module=account&action=txlist&address=${address}&startblock=${startBlock}&endblock=${endBlock}&sort=asc&apikey=${this.etherscanApiKey}`
+			`https://${this.etherscanUrl}/api?module=account&action=txlist&address=${address}&startblock=${startBlock}&endblock=${endBlock}&sort=asc&apikey=${this.etherscanApiKey}`
 		);
 
 		if (!res.ok) {
