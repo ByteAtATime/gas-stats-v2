@@ -27,3 +27,18 @@ export const totalTxFeeStats = (
 
 	return { totalTxFee, totalTxFeeEth, totalTxFeeUsd };
 };
+
+export type FormatPrecision = 'precise' | 'compact';
+const PRECISIONS: Record<FormatPrecision, number> = {
+	precise: 6,
+	compact: 4
+};
+
+export const formatEther = (value: number, precision: FormatPrecision): string => {
+	const decimals = PRECISIONS[precision];
+
+	return value.toLocaleString('en-US', {
+		minimumFractionDigits: decimals,
+		maximumFractionDigits: decimals
+	});
+};

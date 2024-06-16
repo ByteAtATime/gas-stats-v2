@@ -41,7 +41,8 @@ export abstract class EvmChainProvider implements ChainProvider {
 			gas: z.string(),
 			gasPrice: z.string(),
 			isError: z.string(),
-			gasUsed: z.string()
+			gasUsed: z.string(),
+			timeStamp: z.string()
 		});
 
 		const res = await fetch(
@@ -58,7 +59,7 @@ export abstract class EvmChainProvider implements ChainProvider {
 			const parsed = etherscanTxSchema.parse(tx);
 
 			return {
-				timestamp: 0,
+				timestamp: parseInt(parsed.timeStamp),
 				hash: parsed.hash,
 				gasPrice: BigInt(parsed.gasPrice),
 				gasUsed: parseInt(parsed.gasUsed),
