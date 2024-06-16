@@ -10,10 +10,10 @@ export type Transaction = {
 	to: string;
 	value: bigint;
 	reverted: boolean;
-}
+};
 
 export interface ChainProvider {
-	token: TokenProvider
+	token: TokenProvider;
 
 	getBlockNumber(): Promise<bigint>;
 	getTransactions(startBlock: bigint, endBlock: bigint, address: string): Promise<Transaction[]>;

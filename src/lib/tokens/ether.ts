@@ -17,9 +17,7 @@ export class EtherTokenProvider implements TokenProvider {
 			return EtherTokenProvider.cachedPrice;
 		}
 
-		const response = await fetch(
-			'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD'
-		);
+		const response = await fetch('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD');
 
 		if (!response.ok) {
 			throw new Error('Failed to fetch price');
@@ -30,7 +28,7 @@ export class EtherTokenProvider implements TokenProvider {
 		if (
 			typeof data !== 'object' ||
 			data === null ||
-			!("USD" in data) ||
+			!('USD' in data) ||
 			typeof data.USD !== 'number'
 		) {
 			throw new Error('ETH price returned invalid result');

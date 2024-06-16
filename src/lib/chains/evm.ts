@@ -8,10 +8,15 @@ export abstract class EvmChainProvider implements ChainProvider {
 	public abstract token: TokenProvider;
 	public abstract iconPath: string;
 
-	protected constructor(protected etherscanUrl: string, protected etherscanApiKey: string) {}
+	protected constructor(
+		protected etherscanUrl: string,
+		protected etherscanApiKey: string
+	) {}
 
 	public async getBlockNumber(): Promise<bigint> {
-		const res = await fetch(`https://${this.etherscanUrl}/api?module=proxy&action=eth_blockNumber&apikey=${this.etherscanApiKey}`);
+		const res = await fetch(
+			`https://${this.etherscanUrl}/api?module=proxy&action=eth_blockNumber&apikey=${this.etherscanApiKey}`
+		);
 
 		if (!res.ok) {
 			throw new Error('Failed to fetch block number');
@@ -22,8 +27,12 @@ export abstract class EvmChainProvider implements ChainProvider {
 		return BigInt(data.result);
 	}
 
-	async getTransactions(startBlock: bigint, endBlock: bigint, address: string): Promise<Transaction[]> {
-		const etherscanTxSchema =   z.object({
+	async getTransactions(
+		startBlock: bigint,
+		endBlock: bigint,
+		address: string
+	): Promise<Transaction[]> {
+		const etherscanTxSchema = z.object({
 			hash: z.string(),
 			from: z.string(),
 			to: z.string(),
@@ -31,10 +40,12 @@ export abstract class EvmChainProvider implements ChainProvider {
 			gas: z.string(),
 			gasPrice: z.string(),
 			isError: z.string(),
-			gasUsed: z.string(),
-		})
+			gasUsed: z.string()
+		});
 
-		const res = await fetch(`${this.etherscanUrl}/api?module=account&action=txlist&address=${address}&startblock=${startBlock}&endblock=${endBlock}&sort=asc&apikey=${this.etherscanApiKey}`);
+		const res = await fetch(
+			`${this.etherscanUrl}/api?module=account&action=txlist&address=${address}&startblock=${startBlock}&endblock=${endBlock}&sort=asc&apikey=${this.etherscanApiKey}`
+		);
 
 		if (!res.ok) {
 			throw new Error('Failed to fetch transactions');
