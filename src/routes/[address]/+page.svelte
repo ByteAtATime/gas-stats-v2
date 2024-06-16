@@ -3,7 +3,7 @@
 	import { CHAINS } from '$lib/chains/chains';
 	import type { Transaction } from '$lib/chains/types';
 	import Stats from './_components/Stats.svelte';
-	import { shortenAddress, shortenHex } from '$lib/utils';
+	import { shortenAddress } from '$lib/utils';
 
 	const address = $page.params.address;
 	const chain = $page.url.searchParams.get('chain') ?? 'mainnet';
