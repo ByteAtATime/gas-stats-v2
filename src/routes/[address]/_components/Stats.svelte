@@ -19,7 +19,7 @@
 	);
 </script>
 
-<div class="flex flex-col items-center">
+<div class="my-4 flex flex-col items-center">
 	<AverageTxFeeCard transactionCount={transactions.length} {totalTxFeeUsd} />
 
 	<TxFeeCard {totalTxFee} token={chainProvider.token} {tokenPrice} />
