@@ -4,6 +4,7 @@
 	import Stats from './_components/Stats.svelte';
 	import { shortenAddress } from '$lib/utils';
 	import type { Transaction } from '$lib/chains/types';
+	import Skeleton from './_components/Skeleton.svelte';
 
 	const address = $page.params.address;
 	const chain = $page.url.searchParams.get('chain') ?? 'mainnet';
@@ -29,11 +30,10 @@
 	</h1>
 
 	{#await loadData()}
-		<p>Loading...</p>
+		<Skeleton />
 	{:then [transactions, tokenPrice]}
-		{#if transactions}
-			<Stats {transactions} {chainProvider} {tokenPrice} />
-		{/if}
+				<Stats {transactions} {chainProvider} {tokenPrice} />
+<!--		<Skeleton />-->
 	{:catch error}
 		<p>{error.message}</p>
 	{/await}
