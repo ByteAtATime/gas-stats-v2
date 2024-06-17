@@ -5,6 +5,7 @@
 	import { shortenAddress } from '$lib/utils';
 	import type { Transaction } from '$lib/chains/types';
 	import Skeleton from './_components/Skeleton.svelte';
+	import Search from '$lib/components/Search.svelte';
 
 	const address = $page.params.address;
 	const chain = $page.url.searchParams.get('chain') ?? 'mainnet';
@@ -24,7 +25,11 @@
 	};
 </script>
 
-<div class="flex min-h-screen flex-col items-center justify-center px-4">
+<div class="mx-auto mt-4 w-full max-w-screen-md px-4">
+	<Search />
+</div>
+
+<div class="flex min-h-screen flex-col items-center justify-center px-4 py-8">
 	<h1 class="text-3xl font-bold">
 		Stats for <span class="whitespace-nowrap">{shortenAddress(address)}</span>
 	</h1>
