@@ -12,7 +12,11 @@
 
 	let addressInput: HTMLInputElement;
 
+	let isLoading = false;
+
 	const handleSubmit = async () => {
+		isLoading = true;
+
 		if (!isAddress(address)) {
 			const ensAddress = await getEnsAddress(address);
 			if (ensAddress) {
@@ -20,13 +24,20 @@
 			} else {
 				addressInput.setCustomValidity('Invalid address');
 				addressInput.reportValidity();
+
+				isLoading = false;
 				return;
 			}
 		}
 
-		if (!chain || !CHAINS[chain]) return;
+		if (!chain || !CHAINS[chain]) {
+			isLoading = false;
+			return;
+		}
 
 		await goto(`/${address}?chain=${chain}`);
+
+		isLoading = false;
 	};
 </script>
 
@@ -45,7 +56,11 @@
 
 	<NetworksDropdown bind:value={chain} />
 
-	<button class="btn btn-square btn-primary">
-		<Fa icon={faSearch} size="1.5x" />
+	<button class="btn btn-square btn-primary" disabled={isLoading}>
+		{#if !isLoading}
+			<Fa icon={faSearch} size="1.5x" />
+		{:else}
+			<div class="loading" />
+		{/if}
 	</button>
 </form>
