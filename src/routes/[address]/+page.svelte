@@ -12,7 +12,7 @@
 
 	$: chainProvider = CHAINS[chain];
 
-	const loadData = async (): Promise<[Transaction[], number]> => {
+	$: loadData = async (): Promise<[Transaction[], number]> => {
 		const blockNumber = await chainProvider.getBlockNumber();
 
 		const transactions = chainProvider.getTransactions(0, blockNumber + 100n, address);
@@ -27,7 +27,7 @@
 	<Search />
 </div>
 
-<div class="flex min-h-screen flex-col items-center justify-center px-4 py-8">
+<div class="flex min-h-screen flex-col items-center px-4 py-8">
 	<h1 class="text-3xl font-bold">
 		Stats for <span class="whitespace-nowrap">{shortenAddress(address)}</span>
 	</h1>
