@@ -4,7 +4,7 @@
 
 	export let value: string | null;
 
-	const networks = Object.keys(CHAINS);
+	const networks = Object.keys(CHAINS).filter((chain) => chain !== 'mock');
 </script>
 
 <Select

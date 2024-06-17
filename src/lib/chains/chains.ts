@@ -1,5 +1,6 @@
 import { EtherEvmChainProvider } from '$lib/chains/evm';
 import type { ChainProvider } from '$lib/chains/types';
+import { MockChainProvider } from '$lib/chains/mock';
 
 export const CHAINS: Record<string, ChainProvider> = {
 	mainnet: new EtherEvmChainProvider(
@@ -15,5 +16,6 @@ export const CHAINS: Record<string, ChainProvider> = {
 		'optimistic.etherscan.io',
 		'Optimism',
 		'/chains/optimism.svg'
-	)
+	),
+	mock: new MockChainProvider()
 };
