@@ -8,7 +8,15 @@ const publicClient = createPublicClient({
 });
 
 export const getEnsAddress = async (name: string) => {
+	let normalizedName: string;
+	try {
+		normalizedName = normalize(name);
+	} catch {
+		// Invalid ENS name
+		return null;
+	}
+
 	return await publicClient.getEnsAddress({
-		name: normalize(name)
+		name: normalizedName
 	});
 };
