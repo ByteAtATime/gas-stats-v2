@@ -1,38 +1,41 @@
-# create-svelte
+# Gas Stats
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+This is a simple web tool that aggregates the amount of gas used for all time.
 
-## Creating a project
+## Screenshots
 
-If you're seeing this, you've probably already done this step. Congrats!
+> Stats at a glance
+> ![Cards](screenshots/cards.png)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+> Transactions by tx fee
+> ![Transactions table](screenshots/table.png)
 
-## Developing
+## Getting Started
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+First, clone the repository:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+git clone https://github.com/ByteAtATime/gas-stats-v2.git
 ```
 
-## Building
+Then, install the dependencies:
+    
+```bash
+cd gas-stats-v2
+pnpm install
+```
+    
+Finally, start the development server:
+    
+```bash
+pnpm dev
+```
 
-To create a production version of your app:
+The app should now be running at [http://localhost:5173](http://localhost:5173).
+
+You can also run integration tests, which are written using [Playwright](https://playwright.dev/):
 
 ```bash
-npm run build
+pnpm test:integration
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
