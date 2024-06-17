@@ -70,7 +70,7 @@
 					<td>{(Number(tx.gasPrice) / 10e9).toFixed(3)}</td>
 					<td>{tx.gasUsed.toLocaleString('en-US')}</td>
 					<td>
-						<b>
+						<b class="whitespace-nowrap">
 							{formatEther(txFeeEth, 'precise')}
 							{chainProvider.token.symbol}
 						</b>

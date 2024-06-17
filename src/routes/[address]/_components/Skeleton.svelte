@@ -44,8 +44,11 @@
 				<td class="whitespace-nowrap">Jan 31, 2024, 11:12:13 AM</td>
 				<td>1.234</td>
 				<td>123,456</td>
-				<td><b>1.234567 ETH</b><br /><span class="whitespace-nowrap">(&approx; $1,234.56)</span></td
-				>
+				<td>
+					<b class="whitespace-nowrap">1.234567 ETH</b>
+					<br />
+					<span class="whitespace-nowrap">(&approx; $1,234.56)</span>
+				</td>
 				<td>1.2345 ETH</td>
 				<td>12.34%</td>
 			</tr>
