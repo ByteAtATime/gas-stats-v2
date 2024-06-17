@@ -56,7 +56,7 @@
 
 	<NetworksDropdown bind:value={chain} />
 
-	<button class="btn btn-square btn-primary" disabled={isLoading}>
+	<button class="btn btn-square btn-primary" disabled={isLoading} aria-label="Search">
 		{#if !isLoading}
 			<Fa icon={faSearch} size="1.5x" />
 		{:else}
