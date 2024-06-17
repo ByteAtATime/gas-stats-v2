@@ -75,7 +75,7 @@
 							{chainProvider.token.symbol}
 						</b>
 						<br />
-						(&approx; ${(txFeeEth * tokenPrice).toFixed(2)})
+						<span class="whitespace-nowrap">(&approx; ${(txFeeEth * tokenPrice).toFixed(2)})</span>
 					</td>
 					<td
 						>{formatEther(chainProvider.token.numberToUnits(tx.value), 'compact')}
