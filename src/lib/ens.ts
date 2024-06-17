@@ -1,4 +1,4 @@
-import { createPublicClient, http } from 'viem';
+import { createPublicClient, http, isAddress } from 'viem';
 import { mainnet } from 'viem/chains';
 import { normalize } from 'viem/ens';
 
@@ -18,5 +18,13 @@ export const getEnsAddress = async (name: string) => {
 
 	return await publicClient.getEnsAddress({
 		name: normalizedName
+	});
+};
+
+export const getEnsName = async (address: string) => {
+	if (!isAddress(address)) return null;
+
+	return await publicClient.getEnsName({
+		address
 	});
 };

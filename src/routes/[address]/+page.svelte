@@ -6,6 +6,7 @@
 	import type { Transaction } from '$lib/chains/types';
 	import Skeleton from './_components/Skeleton.svelte';
 	import Search from '$lib/components/Search.svelte';
+	import { getEnsName } from '$lib/ens';
 
 	$: address = $page.params.address;
 	$: chain = $page.url.searchParams.get('chain') ?? 'mainnet';
@@ -21,6 +22,8 @@
 
 		return Promise.all([transactions, tokenPrice]);
 	};
+
+	$: ensNamePromise = getEnsName(address);
 </script>
 
 <div class="mx-auto mt-4 w-full max-w-screen-md px-4">
@@ -29,7 +32,15 @@
 
 <div class="flex min-h-screen flex-col items-center px-4 py-8">
 	<h1 class="text-3xl font-bold">
-		Stats for <span class="whitespace-nowrap">{shortenAddress(address)}</span>
+		Stats for <span class="whitespace-nowrap">
+			{#await ensNamePromise}
+				{shortenAddress(address)}
+			{:then ensName}
+				{ensName ?? shortenAddress(address)}
+			{:catch error}
+				{shortenAddress(address)}
+			{/await}
+		</span>
 	</h1>
 
 	{#await loadData()}
