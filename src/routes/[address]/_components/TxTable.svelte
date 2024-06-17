@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { formatEther, shortenTx } from '$lib/utils';
+	import { formatEther, formatUsd, shortenTx } from '$lib/utils';
 	import { DateTime } from 'luxon';
 	import type { Transaction } from '$lib/chains/types.js';
 	import type { ChainProvider } from '$lib/chains/types.js';
@@ -68,12 +68,7 @@
 							{chainProvider.token.symbol}
 						</b>
 						<br />
-						<span class="whitespace-nowrap"
-							>(&approx; {(txFeeEth * tokenPrice).toLocaleString('en-US', {
-								style: 'currency',
-								currency: 'USD'
-							})})</span
-						>
+						<span class="whitespace-nowrap">(&approx; {formatUsd(txFeeEth * tokenPrice)})</span>
 					</td>
 					<td
 						>{formatEther(chainProvider.token.numberToUnits(tx.value), 'compact')}
