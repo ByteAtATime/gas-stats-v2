@@ -24,7 +24,7 @@
 </script>
 
 <div class="mx-auto mt-4 w-full max-w-screen-md px-4">
-	<Search />
+	<Search {address} {chain} />
 </div>
 
 <div class="flex min-h-screen flex-col items-center px-4 py-8">

@@ -12,7 +12,7 @@
 	placeholder="Choose a network..."
 	required
 	class="z-20 !w-fit min-w-60 text-black"
-	bind:justValue={value}
+	bind:value
 	showChevron={!value}
 >
 	<div slot="selection" let:selection class="flex items-center">

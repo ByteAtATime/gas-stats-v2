@@ -7,8 +7,8 @@
 	import { goto } from '$app/navigation';
 	import { getEnsAddress } from '$lib/ens';
 
-	let address = '';
-	let chain = '';
+	export let address = '';
+	export let chain = '';
 
 	let addressInput: HTMLInputElement;
 
