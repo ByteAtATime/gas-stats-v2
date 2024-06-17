@@ -25,7 +25,19 @@
 		tokenPrice,
 		chainProvider.token
 	);
+
+	let rowsToShow = 100;
+
+	const handleScroll = () => {
+		const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+		if (scrollTop + clientHeight >= scrollHeight - clientHeight / 2) {
+			rowsToShow += 100;
+		}
+	};
 </script>
+
+<svelte:window on:scroll={handleScroll} />
 
 <div class="my-4 flex max-w-screen-md flex-col items-stretch md:flex-row [&>*]:flex-1">
 	<AverageTxFeeCard {totalTxFeeUsd} transactionCount={transactions.length} />
@@ -50,7 +62,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each txsByTxFee as tx (tx.hash)}
+			{#each txsByTxFee.slice(0, rowsToShow) as tx (tx.hash)}
 				{@const txFeeEth = chainProvider.token.numberToUnits(BigInt(tx.gasUsed) * tx.gasPrice)}
 
 				<tr>
