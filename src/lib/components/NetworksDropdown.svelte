@@ -8,24 +8,25 @@
 </script>
 
 <Select
+	bind:justValue={value}
+	{value}
+	class="z-20 !w-fit min-w-60 text-black"
 	items={networks}
 	placeholder="Choose a network..."
 	required
-	class="z-20 !w-fit min-w-60 text-black"
-	bind:value
 	showChevron={!value}
 >
-	<div slot="selection" let:selection class="flex items-center">
+	<div class="flex items-center" let:selection slot="selection">
 		{@const chain = CHAINS[selection.value]}
 
-		<img src={chain.iconPath} alt={selection} class="mr-2 h-6 w-6" />
+		<img alt={selection} class="mr-2 h-6 w-6" src={chain.iconPath} />
 		{chain.name}
 	</div>
 
-	<div slot="item" let:item class="flex items-center">
+	<div class="flex items-center" let:item slot="item">
 		{@const chain = CHAINS[item.value]}
 
-		<img src={chain.iconPath} alt={item} class="mr-2 h-6 w-6" />
+		<img alt={item} class="mr-2 h-6 w-6" src={chain.iconPath} />
 		{chain.name}
 	</div>
 </Select>
