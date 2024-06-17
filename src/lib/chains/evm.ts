@@ -4,7 +4,6 @@ import type { TokenProvider } from '$lib/tokens/types';
 import { z } from 'zod';
 
 export abstract class EvmChainProvider implements ChainProvider {
-	public abstract name: string;
 	public abstract token: TokenProvider;
 
 	protected constructor(

@@ -15,7 +15,7 @@
 	$: loadData = async (): Promise<[Transaction[], number]> => {
 		const blockNumber = await chainProvider.getBlockNumber();
 
-		const transactions = chainProvider.getTransactions(0, blockNumber + 100n, address);
+		const transactions = chainProvider.getTransactions(0n, blockNumber + 100n, address);
 
 		const tokenPrice = chainProvider.token.getPrice();
 
