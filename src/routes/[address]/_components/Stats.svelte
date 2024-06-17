@@ -87,7 +87,12 @@
 							{chainProvider.token.symbol}
 						</b>
 						<br />
-						<span class="whitespace-nowrap">(&approx; ${(txFeeEth * tokenPrice).toFixed(2)})</span>
+						<span class="whitespace-nowrap"
+							>(&approx; {(txFeeEth * tokenPrice).toLocaleString('en-US', {
+								style: 'currency',
+								currency: 'USD'
+							})})</span
+						>
 					</td>
 					<td
 						>{formatEther(chainProvider.token.numberToUnits(tx.value), 'compact')}
