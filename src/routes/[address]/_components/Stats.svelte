@@ -3,8 +3,7 @@
 	import TxFeeCard from './cards/TxFeeCard.svelte';
 	import AverageTxFeeCard from './cards/AverageTxFeeCard.svelte';
 	import HighestTxFee from './cards/HighestTxFee.svelte';
-	import { formatEther, shortenTx, totalTxFeeStats } from '$lib/utils';
-	import { DateTime } from 'luxon';
+	import { totalTxFeeStats } from '$lib/utils';
 	import TxTable from './TxTable.svelte';
 
 	export let transactions: Transaction[];

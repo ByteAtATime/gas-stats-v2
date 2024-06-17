@@ -11,9 +11,9 @@ export class MockChainProvider implements ChainProvider {
 	}
 
 	public async getTransactions(
-		startBlock: bigint,
-		endBlock: bigint,
-		address: string
+		_startBlock: bigint,
+		_endBlock: bigint,
+		_address: string
 	): Promise<Transaction[]> {
 		return [
 			{
@@ -41,11 +41,11 @@ export class MockChainProvider implements ChainProvider {
 		];
 	}
 
-	getAddressExplorerUrl(address: string): string | undefined {
+	getAddressExplorerUrl(_address: string): string | undefined {
 		return undefined;
 	}
 
-	getTxExplorerUrl(tx: string): string | undefined {
+	getTxExplorerUrl(_tx: string): string | undefined {
 		return undefined;
 	}
 }
