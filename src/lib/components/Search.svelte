@@ -45,7 +45,7 @@
 	<input
 		type="text"
 		bind:value={address}
-		placeholder="Enter an address..."
+		placeholder="Enter an address or ENS..."
 		class="input input-bordered flex-1"
 		bind:this={addressInput}
 		on:input={() => {
