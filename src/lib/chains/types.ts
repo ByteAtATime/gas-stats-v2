@@ -14,6 +14,8 @@ export type Transaction = {
 
 export interface ChainProvider {
 	token: TokenProvider;
+	name: string;
+	iconPath: string;
 
 	getBlockNumber(): Promise<bigint>;
 	getTransactions(startBlock: bigint, endBlock: bigint, address: string): Promise<Transaction[]>;

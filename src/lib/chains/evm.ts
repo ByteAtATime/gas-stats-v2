@@ -6,12 +6,13 @@ import { z } from 'zod';
 export abstract class EvmChainProvider implements ChainProvider {
 	public abstract name: string;
 	public abstract token: TokenProvider;
-	public abstract iconPath: string;
 
 	protected constructor(
 		protected apiUrl: string,
 		protected apiKey: string,
-		protected etherscanUrl: string
+		protected etherscanUrl: string,
+		public name: string,
+		public iconPath: string
 	) {}
 
 	public async getBlockNumber(): Promise<bigint> {
@@ -91,6 +92,6 @@ export class EtherEvmChainProvider extends EvmChainProvider {
 		public name: string,
 		public iconPath: string
 	) {
-		super(apiUrl, apiKey, etherscanUrl);
+		super(apiUrl, apiKey, etherscanUrl, name, iconPath);
 	}
 }

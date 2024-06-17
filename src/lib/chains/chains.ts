@@ -9,13 +9,6 @@ export const CHAINS: Record<string, ChainProvider> = {
 		'Mainnet',
 		'/chains/mainnet.svg'
 	),
-	sepolia: new EtherEvmChainProvider(
-		'api-sepolia.etherscan.io',
-		'H7CSRSGHZSJJR83H1PU1AQBSPB5EGIRCED',
-		'sepolia.etherscan.io',
-		'Sepolia',
-		'/chains/sepolia.svg'
-	),
 	optimism: new EtherEvmChainProvider(
 		'api-optimistic.etherscan.io',
 		'AIYRKCZ4VGMVD696E4URYWZVYMZAMI93HS',
