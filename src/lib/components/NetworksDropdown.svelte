@@ -11,7 +11,7 @@
 	items={networks}
 	placeholder="Choose a network..."
 	required
-	class="!w-fit min-w-60 text-black"
+	class="z-20 !w-fit min-w-60 text-black"
 	bind:justValue={value}
 	showChevron={!value}
 >
