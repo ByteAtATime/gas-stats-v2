@@ -23,3 +23,42 @@
 		<div class="skeleton h-4 w-4/5" />
 	</div>
 </div>
+
+<div class="w-full max-w-screen-lg overflow-x-auto">
+	<table class="table table-zebra">
+		<!-- head -->
+		<thead>
+			<tr>
+				<th>Tx Hash</th>
+				<th>Timestamp</th>
+				<th>Gas Price (Gwei)</th>
+				<th>Gas Used</th>
+				<th>Tx Fee</th>
+				<th>Value</th>
+				<th>Gas-to-Value Ratio</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr style="visibility: collapse;">
+				<td class="whitespace-nowrap font-mono">0x000000…000000</td>
+				<td class="whitespace-nowrap">Jan 31, 2024, 11:12:13 AM</td>
+				<td>1.234</td>
+				<td>123,456</td>
+				<td><b>1.234567 ETH</b><br />(≈ $1,234.56)</td>
+				<td>1.2345 ETH</td>
+				<td>12.34%</td>
+			</tr>
+			{#each Array(5) as _}
+				<tr>
+					<td><div class="skeleton h-4" /></td>
+					<td><div class="skeleton h-4" /></td>
+					<td><div class="skeleton h-4" /></td>
+					<td><div class="skeleton h-4" /></td>
+					<td><div class="skeleton h-4" /></td>
+					<td><div class="skeleton h-4" /></td>
+					<td><div class="skeleton h-4" /></td>
+				</tr>
+			{/each}
+		</tbody>
+	</table>
+</div>
