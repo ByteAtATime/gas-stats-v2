@@ -9,15 +9,13 @@
 
 	const address = $page.params.address;
 	const chain = $page.url.searchParams.get('chain') ?? 'mainnet';
-	const blocksToLoad = $page.url.searchParams.get('blocks');
 
 	const chainProvider = CHAINS[chain];
 
 	const loadData = async (): Promise<[Transaction[], number]> => {
 		const blockNumber = await chainProvider.getBlockNumber();
-		const startBlock = blocksToLoad ? BigInt(blockNumber) - BigInt(blocksToLoad) : 0n;
 
-		const transactions = chainProvider.getTransactions(startBlock, blockNumber + 100n, address);
+		const transactions = chainProvider.getTransactions(0, blockNumber + 100n, address);
 
 		const tokenPrice = chainProvider.token.getPrice();
 
