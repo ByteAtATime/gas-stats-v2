@@ -7,10 +7,10 @@
 	import Skeleton from './_components/Skeleton.svelte';
 	import Search from '$lib/components/Search.svelte';
 
-	const address = $page.params.address;
-	const chain = $page.url.searchParams.get('chain') ?? 'mainnet';
+	$: address = $page.params.address;
+	$: chain = $page.url.searchParams.get('chain') ?? 'mainnet';
 
-	const chainProvider = CHAINS[chain];
+	$: chainProvider = CHAINS[chain];
 
 	const loadData = async (): Promise<[Transaction[], number]> => {
 		const blockNumber = await chainProvider.getBlockNumber();
