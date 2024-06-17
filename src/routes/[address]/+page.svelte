@@ -37,7 +37,7 @@
 				{shortenAddress(address)}
 			{:then ensName}
 				{ensName ?? shortenAddress(address)}
-			{:catch error}
+			{:catch _}
 				{shortenAddress(address)}
 			{/await}
 		</span>
