@@ -5,22 +5,28 @@
 	import { isAddress } from 'viem';
 	import { CHAINS } from '$lib/chains/chains';
 	import { goto } from '$app/navigation';
+	import { getEnsAddress } from '$lib/ens';
 
 	let address = '';
 	let chain = '';
 
 	let addressInput: HTMLInputElement;
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		if (!isAddress(address)) {
-			addressInput.setCustomValidity('Invalid address');
-			addressInput.reportValidity();
-			return;
+			const ensAddress = await getEnsAddress(address);
+			if (ensAddress) {
+				address = ensAddress;
+			} else {
+				addressInput.setCustomValidity('Invalid address');
+				addressInput.reportValidity();
+				return;
+			}
 		}
 
 		if (!chain || !CHAINS[chain]) return;
 
-		goto(`/${address}?chain=${chain}`);
+		await goto(`/${address}?chain=${chain}`);
 	};
 </script>
 
@@ -32,9 +38,7 @@
 		class="input input-bordered flex-1"
 		bind:this={addressInput}
 		on:input={() => {
-			if (isAddress(address)) {
-				addressInput.setCustomValidity('');
-			}
+			addressInput.setCustomValidity('');
 		}}
 		required
 	/>
